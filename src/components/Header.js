@@ -7,19 +7,7 @@ import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { getFromLS } from "../utils/storage";
-
-const menus = [
-  "MONEY TRANSFER",
-  "FOREIGN EXCHANGE",
-  "FAQS",
-  "FIND & CONTACT US",
-];
-
-const logos = {
-  hhmt: "/images/hhmt-logo.svg",
-  remox: "/images/remox-logo.svg",
-  fefx: "/images/fefx-logo.png",
-};
+import { NavMenus, ProductLogo } from "../constants"
 
 const Header = () => {
   return (
@@ -27,10 +15,10 @@ const Header = () => {
       <ContainerStyled maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-            <LogoStyled src={logos[getFromLS('theme')]} width={32} height={32} alt="" />
+            <LogoStyled src={ProductLogo[getFromLS('theme')]} width={32} height={32} alt="" />
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {menus.map((page) => (
+            {NavMenus.map((page) => (
               <Button
                 key={page}
                 onClick={() => {}}
