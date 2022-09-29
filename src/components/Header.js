@@ -6,34 +6,34 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { getFromLS } from "../utils/storage";
 
-const pages = [
+const menus = [
   "MONEY TRANSFER",
   "FOREIGN EXCHANGE",
   "FAQS",
   "FIND & CONTACT US",
 ];
+
 const logos = {
   hhmt: "/images/hhmt-logo.svg",
   remox: "/images/remox-logo.svg",
   fefx: "/images/fefx-logo.png",
 };
 
-const Header = ({ theme }) => {
-  const handleCloseNavMenu = () => {};
-
+const Header = () => {
   return (
     <AppBar position="static">
       <ContainerStyled maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-            <LogoStyled src={logos[theme]} width={32} height={32} alt="" />
+            <LogoStyled src={logos[getFromLS('theme')]} width={32} height={32} alt="" />
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {menus.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => {}}
                 sx={{ my: 2, color: "var(--bg-header-text)", display: "block" }}
               >
                 {page}
@@ -47,7 +47,7 @@ const Header = ({ theme }) => {
 };
 
 const ContainerStyled = styled(Container)`
-  display: flex !important;
+  display: flex!important;
   max-width: 100%!important;
   justify-content: center;
   background-color: var(--bg-header);

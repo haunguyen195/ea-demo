@@ -1,13 +1,16 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 
-const Layout = ({ theme, children }) => {
-  const isRootPage = window.location.pathname === '/'
+const Layout = ({ children }) => {
+  const { pathname } = useLocation();
+
+  const isRootPage = pathname === '/'
 
   return (
     <LayoutStyled>
-      {!isRootPage && <Header theme={theme} />}
+      {!isRootPage && <Header />}
       {children}
     </LayoutStyled>
   );

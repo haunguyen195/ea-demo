@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Menu from "../components/Menu";
+import { setToLS } from "../utils/storage";
 
-const ProductSelectionPage = ({ theme }) => {
-  const isRootPage = window.location.pathname === '/'
+const ProductSelectionPage = () => {
+  const { pathname } = useLocation();
+
+  const isRootPage = pathname === '/'
 
   useEffect(() => {
     if (isRootPage) {
-      theme('')
+      setToLS('theme', '')
     }
-  }, [isRootPage, theme])
+  }, [isRootPage])
 
   return (
     <ProductSelectionStyled>
-      <Menu theme={theme} />
+      <Menu />
     </ProductSelectionStyled>
   );
 };

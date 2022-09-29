@@ -1,29 +1,27 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import ProductSelectionPage from "./pages/ProductSelectionPage";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./components/Layout";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  const [theme, setTheme] = useState("");
-
-  useEffect(() => {
-    document.documentElement.className = theme;
-  }, [theme]);
-
   return (
     <BrowserRouter>
       <Suspense fallback={null}>
-        <Layout theme={theme}>
+        <Layout>
           <AppStyled>
             <Routes>
-              <Route exact path="/login" element={<LoginPage />} />
+              <Route exact path="/hhmt/login" element={<LoginPage />} />
+              <Route exact path="/remox/login" element={<LoginPage />} />
+              <Route exact path="/fefx/login" element={<LoginPage />} />
               <Route
                 exact
                 path="/"
-                element={<ProductSelectionPage theme={setTheme} />}
+                element={<ProductSelectionPage />}
               />
+              <Route path='*' element={<NotFoundPage />} />
             </Routes>
           </AppStyled>
         </Layout>

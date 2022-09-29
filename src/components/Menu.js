@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { setToLS } from "../utils/storage";
 
 const products = [
     {
@@ -17,16 +18,15 @@ const products = [
     },
   ];
 
-const Menu = ({ theme }) => {
-
+const Menu = () => {
   return (
     <MenuStyled>
       {products.map((p) => (
         <Link
           key={p.label}
-          to='/login'
+          to={`${p.label}/login`}
           className="product-item"
-          onClick={() => theme(p.label)}
+          onClick={() => setToLS('theme', p.label)}
         >
           <img src={p.logoUrl} height={32} width={32} alt={p.label} />
         </Link>
