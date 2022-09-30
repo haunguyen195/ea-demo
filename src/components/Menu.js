@@ -10,7 +10,7 @@ const Menu = () => {
       {ProductItems.map((p) => (
         <Link
           key={p.label}
-          to={`${p.label}/login`}
+          to={`/${p.label}/login`}
           className="menu__item"
           onClick={() => setToLS("theme", p.label)}
         >

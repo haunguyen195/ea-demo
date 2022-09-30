@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { getFromLS } from "../utils/storage";
 import Header from "./Header";
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation();
+  const [theme, setTheme] = useState('')
 
   const isRootPage = pathname === '/'
 
+  useEffect(() => {
+    setTheme(getFromLS('theme'))
+  }, [pathname])
+
   return (
     <LayoutStyled>
-      {!isRootPage && <Header />}
+      {(!isRootPage && theme) && <Header theme={theme} />}
       {children}
     </LayoutStyled>
   );

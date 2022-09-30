@@ -6,16 +6,15 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { getFromLS } from "../utils/storage";
 import { NavMenus, ProductLogo } from "../constants"
 
-const Header = () => {
+const Header = ({ theme }) => {
   return (
     <AppBar position="static">
       <ContainerStyled maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-            <LogoStyled src={ProductLogo[getFromLS('theme')]} width={32} height={32} alt="" />
+            <LogoStyled src={ProductLogo[theme]} width={32} height={32} alt="" />
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {NavMenus.map((page) => (

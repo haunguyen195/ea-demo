@@ -13,9 +13,7 @@ function App() {
         <Layout>
           <AppStyled>
             <Routes>
-              <Route exact path="/hhmt/login" element={<LoginPage />} />
-              <Route exact path="/remox/login" element={<LoginPage />} />
-              <Route exact path="/fefx/login" element={<LoginPage />} />
+              <Route exact path="/:theme/login" element={<LoginPage />} />
               <Route
                 exact
                 path="/"

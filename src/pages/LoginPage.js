@@ -1,24 +1,20 @@
 import { TextField } from "@mui/material";
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeStyleSheet } from "../constants";
 import useLoadCss from "../hooks/useLoadCss";
-import { getFromLS, setToLS } from "../utils/storage";
+import { setToLS } from "../utils/storage";
 
 const LoginPage = () => {
-  const { pathname } = useLocation();
+  const { theme } = useParams();
 
-  const themeUrl = pathname && pathname.split('/')[1]
-  const themeLS = getFromLS('theme')
-  useLoadCss(ThemeStyleSheet[themeUrl || themeLS])
-
-  const theme = themeUrl || themeLS
+  useLoadCss(ThemeStyleSheet[theme]);
 
   useEffect(() => {
-    setToLS('theme', theme)
+    setToLS("theme", theme);
   }, [theme]);
-  
+
   return (
     <LoginStyled>
       <div className="text-field">
