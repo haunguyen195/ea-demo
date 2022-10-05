@@ -6,8 +6,8 @@ import { ThemeStyleSheet } from "../constants";
 import useLoadCss from "../hooks/useLoadCss";
 import { setToLS } from "../utils/storage";
 
-const LoginPage = () => {
-  const { theme } = useParams();
+const LoginPage = ({ defaultTheme }) => {
+  const { theme = defaultTheme } = useParams();
 
   useLoadCss(ThemeStyleSheet[theme]);
 
