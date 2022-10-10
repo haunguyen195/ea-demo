@@ -35,3 +35,6 @@ export const ThemeStyleSheet = {
   remox: '/css/remox.css',
   fefx: '/css/fefx.css',
 }
+
+export const HHMT_THEME = 'hhmt'
+export const REMOX_THEME = 'remox'

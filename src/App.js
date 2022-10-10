@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "./components/Layout";
+import { HHMT_THEME, REMOX_THEME } from "./constants";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductSelectionPage from "./pages/ProductSelectionPage";
@@ -13,8 +14,9 @@ function App() {
         <Layout>
           <AppStyled>
             <Routes>
-              <Route exact path="/hhmt" element={<LoginPage defaultTheme="hhmt" />} />
-              <Route exact path="/remox" element={<LoginPage defaultTheme="remox" />} />
+              <Route exact path="/hhmt.com.au" element={<LoginPage />} />
+              <Route exact path="/hhmt" element={<LoginPage defaultTheme={HHMT_THEME} />} />
+              <Route exact path="/remox" element={<LoginPage defaultTheme={REMOX_THEME} />} />
               <Route exact path="/:theme/login" element={<LoginPage />} />
               <Route
                 exact

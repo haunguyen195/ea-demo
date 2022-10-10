@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ThemeStyleSheet } from "../constants";
 import useLoadCss from "../hooks/useLoadCss";
@@ -8,8 +8,15 @@ import { setToLS } from "../utils/storage";
 
 const LoginPage = ({ defaultTheme }) => {
   const { theme = defaultTheme } = useParams();
+  const navigate = useNavigate();
 
   useLoadCss(ThemeStyleSheet[theme]);
+
+  useEffect(() => {
+    if (document.location.pathname !== '/hhmt' || document.location.pathname !== '/remox') {
+      navigate("/hhmt");
+    }
+  }, [])
 
   useEffect(() => {
     setToLS("theme", theme);
