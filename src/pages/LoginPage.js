@@ -8,15 +8,9 @@ import { setToLS } from "../utils/storage";
 
 const LoginPage = ({ defaultTheme }) => {
   const { theme = defaultTheme } = useParams();
-  const navigate = useNavigate();
 
   useLoadCss(ThemeStyleSheet[theme]);
 
-  useEffect(() => {
-    if (document.location.pathname !== '/hhmt' || document.location.pathname !== '/remox') {
-      navigate("/hhmt");
-    }
-  }, [])
 
   useEffect(() => {
     setToLS("theme", theme);
